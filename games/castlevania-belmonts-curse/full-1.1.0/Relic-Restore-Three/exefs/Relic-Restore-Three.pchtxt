@@ -1,0 +1,6 @@
+@nsobid-0F1169AA7D0FA4529C861F96ADEC306E
+# Relic-Restore-Three - Switch full game 1.1.0
+@flag offset_shift 0x100
+@enabled
+01C236E0 69008052
+@stop

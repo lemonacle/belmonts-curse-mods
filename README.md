@@ -4,18 +4,13 @@ Nintendo Switch mods and practical notes for Castlevania: Belmont's Curse, with 
 
 ## Downloads
 
-Get the patch-only ZIPs from **[Releases](https://github.com/lemonacle/belmonts-curse-mods/releases/latest)**.
+Download the **[full-game mod collection](https://github.com/lemonacle/belmonts-curse-mods/releases/latest)**: one ZIP, one README, one LICENSE, and separate folders for 4:3, RenderScale, Manual Zoom, NG+, Speed, Relic Toggle and its Restore Three recovery companion. Install only the folders you want; never combine Relic Toggle and Restore Three.
 
-**Movement speed:** [Speed v1 ZIP](https://github.com/lemonacle/belmonts-curse-mods/releases/download/belmonts-curse-speed-v1/Belmonts-Curse-1.1.0-Speed-v1.zip) — doubles Rose's movement speed; a separate, optional download from the display fixes. [Instructions](games/castlevania-belmonts-curse/full-1.1.0/Speed-v1/README.md).
+See the [collection README](games/castlevania-belmonts-curse/full-1.1.0/README.md) for compatibility, installation, NG+ rules, relic save handling, PC reference credit, testing limits, known issues and support status.
 
-NG+ is being adapted to an executable-only package and is not included in the display or speed ZIPs.
+The author has completed a playthrough and an NG+ playthrough, using Speed to expedite testing. This is probably the last planned update. Feedback is welcome and fixes may be possible, but further playtesting is not planned for the foreseeable future.
 
-| Game | Supported version | Included work | Testing |
-| --- | --- | --- | --- |
-| [Castlevania: Belmont's Curse Demo](games/castlevania-belmonts-curse/README.md) | 1.0.0 | 4:3 V7.1; optional local Render Scale 1x builder | Demo 4:3 tested during play on Nova and PC emulator |
-| [Castlevania: Belmont's Curse](games/castlevania-belmonts-curse/README.md) | 1.1.0 | 4:3 v5, asset-free RenderScale Fix v3, optional R3 Manual Zoom v3 in one ZIP | User-confirmed packages; not every room/cutscene validated |
-
-Match the **title ID and executable build ID**, not just the game name. A patch for the demo or another update will not necessarily work. These packages target emulator `.pchtxt` support; native Switch hardware has not been tested.
+The [demo 1.0.0 patch](https://github.com/lemonacle/belmonts-curse-mods/releases/tag/belmonts-curse-v1) remains in its historical release. Do not mix demo and full-game patches.
 
 ## Find an existing mod first
 
@@ -41,7 +36,7 @@ Useful starting points:
 - [UnityPy](https://github.com/K0lb3/UnityPy), for inspecting Unity assets from your own dumps
 - [Capstone](https://github.com/capstone-engine/capstone), for instruction inspection
 
-I've also worked on 4:3 fixes for PC games—you can find those on [my GitHub profile](https://github.com/lemonacle).
+I've also worked on 4:3 fixes for PC gamesâ€”you can find those on [my GitHub profile](https://github.com/lemonacle).
 
 ## Reporting an issue
 
