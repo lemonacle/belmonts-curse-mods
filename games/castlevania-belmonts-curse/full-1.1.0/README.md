@@ -100,5 +100,5 @@ The separate folders make it possible to use just RenderScale, omit R3 zoom, or
 study one implementation when adapting a mod to another display setup. Patches
 are build-specific; renaming a file does not port it to another update or ratio.
 
-Project and additional resources: https://github.com/lemonacle/switch-4x3-mods
+Project and additional resources: https://github.com/lemonacle/belmonts-curse-mods
 Original contributions are MIT licensed; see `LICENSE`. No game data is distributed.

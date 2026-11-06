@@ -1,0 +1,6 @@
+@nsobid-0F1169AA7D0FA4529C861F96ADEC306E
+# Speed-v1: Rose locomotion speed 2x
+@flag offset_shift 0x100
+@enabled
+02106918 0029281E
+@stop

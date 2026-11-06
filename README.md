@@ -1,10 +1,14 @@
-# Switch 4:3 Mods
+# Belmont's Curse Mods
 
-Nintendo Switch 4:3 patches and practical notes, with testing focused on the Retroid Pocket Nova and Eden. **Patches and tools only: no games, extracted assets, firmware, keys, or saves.**
+Nintendo Switch mods and practical notes for Castlevania: Belmont's Curse, with testing focused on the Retroid Pocket Nova and Eden. **Patches and tools only: no games, extracted assets, firmware, keys, or saves.**
 
 ## Downloads
 
-Get the patch-only ZIPs from **[Releases](https://github.com/lemonacle/switch-4x3-mods/releases/latest)**.
+Get the patch-only ZIPs from **[Releases](https://github.com/lemonacle/belmonts-curse-mods/releases/latest)**.
+
+**Movement speed:** [Speed v1 ZIP](https://github.com/lemonacle/belmonts-curse-mods/releases/download/belmonts-curse-speed-v1/Belmonts-Curse-1.1.0-Speed-v1.zip) — doubles Rose's movement speed; a separate, optional download from the display fixes. [Instructions](games/castlevania-belmonts-curse/full-1.1.0/Speed-v1/README.md).
+
+NG+ is being adapted to an executable-only package and is not included in the display or speed ZIPs.
 
 | Game | Supported version | Included work | Testing |
 | --- | --- | --- | --- |
