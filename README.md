@@ -1,45 +1,31 @@
 # Belmont's Curse Mods
 
-Nintendo Switch mods and practical notes for Castlevania: Belmont's Curse, with testing focused on the Retroid Pocket Nova and Eden. **Patches and tools only: no games, extracted assets, firmware, keys, or saves.**
+Optional Nintendo Switch mods for **Castlevania: Belmont's Curse**: 4:3 framing, internal render-scale correction, manual camera zoom, New Game+, movement speed, and expanded relic equipment. Testing focused on Eden and the Retroid Pocket Nova.
 
-## Downloads
+## Download and compatibility
 
-Download the **[full-game mod collection](https://github.com/lemonacle/belmonts-curse-mods/releases/latest)**: one ZIP, one README, one LICENSE, and separate folders for 4:3, RenderScale, Manual Zoom, NG+, Speed, Relic Toggle and its Restore Three recovery companion. Install only the folders you want; never combine Relic Toggle and Restore Three.
+Get the **[full-game mod collection](https://github.com/lemonacle/belmonts-curse-mods/releases/latest)** for game **1.1.0**. The ZIP contains one README, one LICENSE, and a separate folder for each mod. All components are executable `.pchtxt` patches; no game files, RomFS overrides, builders, or extra runtime dependencies are needed for the full-game collection.
 
-See the [collection README](games/castlevania-belmonts-curse/full-1.1.0/README.md) for compatibility, installation, NG+ rules, relic save handling, PC reference credit, testing limits, known issues and support status.
+Match title ID `0100BA4026E94000` and executable build ID `0F1169AA7D0FA4529C861F96ADEC306E`. Emulator `.pchtxt` support is required; native Switch hardware is not validated.
 
-The author has completed a playthrough and an NG+ playthrough, using Speed to expedite testing. This is probably the last planned update. Feedback is welcome and fixes may be possible, but further playtesting is not planned for the foreseeable future.
+Install only the mod folders you want. Manual Zoom requires the 4:3 mod. **Relic Restore Three is an uninstall/recovery companion: never enable it alongside Relic Toggle.** Read the [collection README](games/castlevania-belmonts-curse/full-1.1.0/README.md) for installation, NG+ carryover rules, relic save handling, known issues, and removal instructions.
 
-The [demo 1.0.0 patch](https://github.com/lemonacle/belmonts-curse-mods/releases/tag/belmonts-curse-v1) remains in its historical release. Do not mix demo and full-game patches.
+## Demo files
 
-## Find an existing mod first
+The demo **1.0.0** 4:3 patch remains in the [historical release](https://github.com/lemonacle/belmonts-curse-mods/releases/tag/belmonts-curse-v1). Its title and build IDs differ from the full game; see the [version notes](games/castlevania-belmonts-curse/README.md). The legacy demo RenderScale builder is retained under `tools/` for users with their own matching dump. It is not needed for the full-game collection.
 
-This is a small collection, not a complete Switch mod index. Before requesting or developing a new fix, check these projects:
+## Testing and support
 
-| Project | What to look for |
-| --- | --- |
-| [pakrett / Aspect-Ratio-Mods](https://github.com/pakrett/Aspect-Ratio-Mods) | A collection focused on 4:3 displays; start with its Switch section. |
-| [StevensND / switch-port-mods](https://github.com/StevensND/switch-port-mods) | Per-game Switch emulator mods, including aspect-ratio and performance work. Read each game's supported versions. |
-| [pacoa-kdbg / Switch-Emulator-Ultrawide-FPS-Mods](https://github.com/pacoa-kdbg/Switch-Emulator-Ultrawide-FPS-Mods) | Another place to search for game-specific aspect-ratio and FPS work. Check the actual ratios offered. |
-| [yuzu-mirror / yuzu-mod-archive](https://github.com/yuzu-mirror/yuzu-mod-archive) | Historical mod listings with version and author information. This is a mirror, not the original emulator organization. |
+I've completed a playthrough and an NG+ playthrough, using Speed as a testing utility to expedite progress. The executable-only NG+ version was approved after Test 2. This does not establish coverage of every optional component, relic combination, room, or device; see the collection README for testing limits.
 
-These links are discovery resources, **not compatibility endorsements**. Not every mod in them supports 4:3, Eden, or your game update. Prefer the original author's release and instructions, and link upstream rather than copying their work here.
+This is probably my last planned mod update for this game. Feedback is welcome and I may be able to fix issues, but I won't be playing more of the game or playtesting further mods for the foreseeable future.
 
-## Want to make or update a mod?
+Please [report issues](https://github.com/lemonacle/belmonts-curse-mods/issues) with the game/build ID, emulator version, device, enabled mods, and exact room or menu sequence. Include screenshots and reproduction steps where possible. For display issues, include the aspect-ratio and resolution settings. Follow the NG+ and relic save precautions in the collection README before changing enabled mods. Redact personal paths from logs and keep private saves, dumps, and keys out of reports.
 
-Start with the **[contributor guide and resources](docs/CONTRIBUTING.md)**. It covers finding prior work, matching builds, distinguishing stretching from cropping, UI and camera pitfalls, and publishing patches without game data.
+## Credits and development notes
 
-Useful starting points:
+Relic Toggle used **[Charms Unlimited by kkyleeb21](https://www.nexusmods.com/castlevaniabelmontscurse/mods/37)** as a behavioral reference. The Switch version is an independent implementation with different save handling; it includes no PC plugin code or assets. The collection README explains the differences and credits.
 
-- [StevensND's Ghidra/IDA and aspect-ratio porting guide](https://github.com/StevensND/ghidra-port-mods-guide)
-- [Ghidra](https://github.com/NationalSecurityAgency/ghidra)
-- [UnityPy](https://github.com/K0lb3/UnityPy), for inspecting Unity assets from your own dumps
-- [Capstone](https://github.com/capstone-engine/capstone), for instruction inspection
+For proposed fixes or build adaptations, see the [contributor notes](docs/CONTRIBUTING.md). Camera inspection reports remain alongside the full-game patches; internal scene names may contain spoilers.
 
-I've also worked on 4:3 fixes for PC gamesâ€”you can find those on [my GitHub profile](https://github.com/lemonacle).
-
-## Reporting an issue
-
-Include the title ID, game version/build ID, emulator version, device, enabled mods, aspect-ratio setting, and the room or menu where it happens. A comparison from the same position with the mod disabled is especially useful. Redact personal paths from logs. Do not upload dumps, keys, saves, or extracted game bundles.
-
-Original scripts, documentation, and patch contributions here are MIT licensed. Linked projects retain their own authorship and licenses. Game names identify compatibility; this repository is not affiliated with the developers or publishers.
+Original patches, scripts, and documentation are MIT licensed; see [LICENSE](LICENSE). Referenced projects retain their own licenses. This repository is not affiliated with the game's developers or publishers.

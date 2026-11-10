@@ -1,53 +1,36 @@
-# Finding, developing, and sharing a Switch 4:3 mod
+# Contributing to Belmont's Curse Mods
 
-## Check existing work
+This repository contains the Switch mods for Castlevania: Belmont's Curse documented in the [main README](../README.md). Contributions should address these mods, their supported builds, or their documentation. Feedback is welcome, but the maintainer is not planning further playthroughs or ongoing mod testing; review and fixes may be limited.
 
-Search the collections linked in the [main README](../README.md), using both the game's name and title ID. Search the original repository's issues and releases for your update and desired aspect ratio. If a working mod already exists, a link and a useful compatibility note are preferable to a duplicate.
+## Report or describe the change
 
-When adapting existing work, identify the author, link the exact source, and follow its license. A public repository is not automatically permission to redistribute its contents. The external projects listed here are references; the Castlevania packages do not contain their mods.
+Check existing issues and the [full-game collection README](../games/castlevania-belmonts-curse/full-1.1.0/README.md) for known behavior and installation requirements. Explain the problem, the affected component, the steps that reproduce it, and the expected result. Include the emulator/device and enabled mods. For a proposed fix, distinguish static checks from results observed in-game.
 
-## Identify the exact build
+## Match the supported build
 
-Record the title ID, displayed game version, and executable build ID. Select the intended update before extracting ExeFS/RomFS. Hash the original files used as inputs. Keep base-game and updated dumps separate locally.
+The current full-game patches target game **1.1.0**, title ID `0100BA4026E94000`, executable build ID `0F1169AA7D0FA4529C861F96ADEC306E`. The demo **1.0.0** is a separate build with different title and executable IDs, documented in the [version notes](../games/castlevania-belmonts-curse/README.md).
 
-The Castlevania full-game first port targeted an earlier dump and did not work on 1.1.0. The corrected port relocated the executable patches and used 1.1.0's asset bundle name. Simply changing the build-ID header would not have fixed the addresses.
+Changing a build-ID header does not port a patch. For a new game update, re-identify the affected functions, original instructions, branch targets, and any reused code regions. Record hashes for local inputs and keep original game files private. Existing entries in `builds.json` describe particular patches or legacy builder inputs; the collection README is the complete guide to the released components.
 
-## Decide what 4:3 should mean
+## Validate the affected behavior
 
-- **Stretching:** the same scene is distorted to fill a different shape.
-- **Cropping:** correct proportions, but part of the original scene is removed.
-- **Expanded view:** preserves the original horizontal coverage and reveals more above/below.
-- **Letterboxing:** fits fixed 16:9 artwork inside 4:3 with black bars above/below.
+- **4:3 and camera changes:** compare the same position with the patch disabled. Check gameplay tracking, room transitions, fixed/rail cameras, menus, videos, credits, and return to title. The 4:3 mod preserves horizontal coverage and adds vertical view, which can expose unfinished scenery. A global zoom change can introduce tracking problems elsewhere.
+- **RenderScale:** check cold launch and transitions between gameplay, save menus, and the main menu. Runtime settings can overwrite an initial scale value.
+- **Manual Zoom:** check R3 toggling, excluded camera types, transitions, and restart behavior alongside 4:3.
+- **NG+:** check true-ending eligibility, R prompts, destination selection, cancel, ordinary Duplicate, source-save preservation, and the documented carryover/reset rules. Confirm that older NG+ RomFS overrides are disabled when testing the executable-only version.
+- **Speed:** check player locomotion and confirm that enemy movement and global timing are unaffected.
+- **Relics:** use backed-up saves to check toggling, effects, saving/loading, death, mirrors, and travel. Preserve the documented distinction between expanded-relic saves and normal three-entry saves. Test recovery separately; never combine Relic Toggle and Restore Three.
 
-Different screens can need different choices. These Castlevania patches expand gameplay vertically, fit menus, and letterbox title/loading artwork.
+Check executable patch ranges against all supported normal components. Restore Three deliberately replaces relic behavior and is mutually exclusive with Relic Toggle. No-overlap checks alone do not prove runtime compatibility.
 
-## Inspect before patching
+## Keep contributions reproducible
 
-Use [StevensND's porting guide](https://github.com/StevensND/ghidra-port-mods-guide) for practical Ghidra/IDA and aspect-ratio starting points. [Ghidra](https://github.com/NationalSecurityAgency/ghidra) and [Capstone](https://github.com/capstone-engine/capstone) help inspect executable instructions; [UnityPy](https://github.com/K0lb3/UnityPy) can inspect supported Unity asset formats.
+Describe what changed, why, the exact build, and what was tested. Preserve unrelated patch bytes. Provide installation and rollback instructions if behavior changes, including any persistent save or profile-setting effects. Do not describe untested behavior as confirmed.
 
-Find the resolution selection, camera aspect/FOV or orthographic size, UI scaling, and any special camera paths. Treat constants as candidates, not proof. Verify callers, inputs, original instructions, and branch targets before changing them. Revalidate every executable update.
+The full-game release uses executable patches only. Share patch definitions and original supporting code/documentation; do not commit game dumps, original executables, asset bundles (including modified bundles), extracted metadata, firmware, keys, or private saves. The demo's legacy RenderScale builder produces a local modified bundle from a matching original dump; generated game data stays private.
 
-For Unity projects, useful official explanations include:
+Credit any prior work and link the exact source. Relic Toggle's behavioral reference is [Charms Unlimited by kkyleeb21](https://www.nexusmods.com/castlevaniabelmontscurse/mods/37); the PC plugin is not included or covered by this repository's MIT license. Respect the reference project's permissions when proposing changes.
 
-- [Camera aspect](https://docs.unity3d.com/ScriptReference/Camera-aspect.html)
-- [Camera viewport rectangle](https://docs.unity3d.com/ScriptReference/Camera-rect.html)
-- [Orthographic camera size](https://docs.unity3d.com/ScriptReference/Camera-orthographicSize.html)
-- [Canvas Scaler](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/script-CanvasScaler.html)
+## Tools used for investigation
 
-An engine setting is not necessarily the final value: animations, transitions, and late camera updates may overwrite it.
-
-## Test the whole camera behavior
-
-Test cold launch, title, loading, map, equipment, settings, cutscenes, short rooms, tall rooms, both directions through transitions, and return to title. Compare the same location and character position at stock 16:9.
-
-Extra vertical view can expose unfinished scenery. Camera confinement may also assume the original frame shape: a taller footprint can stop a camera following the player into short sections. A fix that preserves tracking may still show scenery outside the intended view.
-
-The demo's experimental automatic zoom attempts are deliberately not published as working fixes. They introduced tracking problems or failed to hide the intended scenery. Do not apply a global zoom adjustment solely because one room looks wrong.
-
-## Publish changes, not game files
-
-Share small executable patch definitions or a local patch builder with input-hash checks. Do not commit NSP/XCI/NCA files, original executables, asset bundles (including modified bundles), metadata dumps, firmware, keys, or saves.
-
-For asset edits, verify that only the intended object/property changed after saving. Keep generated bundles local. Include install and rollback instructions, exact supported builds, known limitations, and an honest distinction between static validation and gameplay testing.
-
-External links were checked on 2026-10-20. Projects may move; report broken links or a better upstream resource through an issue or pull request.
+[Ghidra](https://github.com/NationalSecurityAgency/ghidra) and [Capstone](https://github.com/capstone-engine/capstone) can support executable inspection. [UnityPy](https://github.com/K0lb3/UnityPy) was used for local Unity asset inspection and the legacy demo builder. These are development references, not dependencies required to install the full-game mods.
